@@ -70,7 +70,8 @@ dir="${mdir}/${LABEL:-${dev##*/}}.$TYPE"
 
 case $TYPE in
     vfat)
-	mopts="$mopts,flush,gid=100,dmask=000,fmask=111"
+        offset=$(date +%:z | awk -F=":" '{ printf "%d", $1 * 60 + $2 }')
+	mopts="$mopts,flush,gid=100,dmask=000,fmask=111,tz=UTC,time_offset=$offset"
 	;;
     ntfs)
 	mopts="$mopts,flush"
