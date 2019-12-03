@@ -1,7 +1,7 @@
 %define _unpackaged_files_terminate_build 0
 
 Name:           udev-media-automount
-Version:        1.1
+Version:        1.2
 Release:        0%{?dist}
 Summary:        Auto mount removable media devices by means of udev rules.
 
