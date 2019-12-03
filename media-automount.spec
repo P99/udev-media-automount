@@ -1,7 +1,7 @@
 %define _unpackaged_files_terminate_build 0
 
 Name:           udev-media-automount
-Version:        1.2
+Version:        1.1
 Release:        0%{?dist}
 Summary:        Auto mount removable media devices by means of udev rules.
 
@@ -34,6 +34,5 @@ make install DESTDIR=%{buildroot}
 
 %files
 /usr/lib/udev/rules.d/99-media-automount.rules
-/usr/bin/umount_dmenu
 /usr/bin/media-automount
 /usr/lib/systemd/system/media-automount@.service
