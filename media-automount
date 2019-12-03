@@ -4,7 +4,7 @@
 # Directory to use for mounting the devices
 mdir=/media/
 # Default options to use for mounting
-mopts='errors=remount-ro,relatime,utf8,user'
+mopts='errors=remount-ro,relatime,user'
 
 [[ $EUID != 0 ]] && {
     echo "This tool requires root permissions"
