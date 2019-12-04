@@ -1,15 +1,15 @@
 %define _unpackaged_files_terminate_build 0
 
 Name:           udev-media-automount
-Version:        1.2
+Version:        1.3
 Release:        0%{?dist}
 Summary:        Auto mount removable media devices by means of udev rules.
 
 Group:          System Environment/Base
 License:        MIT
-URL:            https://github.com/Ferk/udev-media-automount
-Source0:        %{expand:%%(pwd)}
-Source1:        %{name}.tgz
+URL:            https://github.com/P99/udev-media-automount.git
+Source0:        %{name}-%{version}.tar.bz2
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      x86_64
 
 %description
@@ -24,13 +24,12 @@ Due to changes in udev (long running processes are killed), it's necessary to us
 The script will also use the 'logger' tool to write to the system log.
 
 %prep
-find . -mindepth 1 -delete
-cp -af %{SOURCEURL0}/. .
-mkdir -p %{_sourcedir}/%{name}
-git archive --format=tar.gz  HEAD --output %{_sourcedir}/%{name}.tgz
+%setup -q
 
 %build
-make install DESTDIR=%{buildroot}
+install -D -m 0644 media-automount.rules ${RPM_BUILD_ROOT}/usr/lib/udev/rules.d/99-media-automount.rules
+install -D -m 0755 media-automount ${RPM_BUILD_ROOT}/usr/bin/media-automount
+install -D -m 0644 media-automount@.service ${RPM_BUILD_ROOT}/usr/lib/systemd/system/media-automount@.service
 
 %files
 /usr/lib/udev/rules.d/99-media-automount.rules
