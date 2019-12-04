@@ -10,7 +10,6 @@ License:        MIT
 URL:            https://github.com/P99/udev-media-automount.git
 Source0:        %{name}-%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-BuildArch:      x86_64
 
 %description
 Auto mount removable media devices by means of udev rules.
