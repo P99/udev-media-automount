@@ -1,7 +1,7 @@
 %define _unpackaged_files_terminate_build 0
 
 Name:           udev-media-automount
-Version:        1.4
+Version:        1.5
 Release:        0%{?dist}
 Summary:        Auto mount removable media devices by means of udev rules.
 
@@ -30,8 +30,10 @@ The script will also use the 'logger' tool to write to the system log.
 install -D -m 0644 media-automount.rules ${RPM_BUILD_ROOT}/usr/lib/udev/rules.d/99-media-automount.rules
 install -D -m 0755 media-automount ${RPM_BUILD_ROOT}/usr/bin/media-automount
 install -D -m 0644 media-automount@.service ${RPM_BUILD_ROOT}/usr/lib/systemd/system/media-automount@.service
+install -D -m 0644 media-automount.conf ${RPM_BUILD_ROOT}/usr/lib/tmpfiles.d/media-automount.conf
 
 %files
 /usr/lib/udev/rules.d/99-media-automount.rules
 /usr/bin/media-automount
 /usr/lib/systemd/system/media-automount@.service
+/usr/lib/tmpfiles.d/media-automount.conf
