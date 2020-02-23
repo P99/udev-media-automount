@@ -51,8 +51,8 @@ then
 fi
 
 # Load additional info for the block device
-info=$(blkid -po full $dev)
-eval ${info#*:}
+info=$(blkid -po export $dev)
+eval ${info// /_}
 
 # Check /etc/fstab for an entry corresponding to the device
 [ "$UUID" ] && fstab=$(grep /etc/fstab -e "${UUID/\-/\\\-}") || \
